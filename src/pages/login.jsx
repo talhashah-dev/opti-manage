@@ -5,6 +5,7 @@ import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
+import Link from "next/link";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,11 +17,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       const docRef = doc(db, "users", user.uid);
@@ -44,32 +41,42 @@ const Login = () => {
 
   return (
     <Layout title="Login">
-      <h1 className="text-2xl font-bold mb-6">Login</h1>
-      <form onSubmit={handleLogin} className="space-y-4">
-        {error && <p className="text-red-500">{error}</p>}
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded text-black"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded text-black"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded"
-        >
-          Login
-        </button>
-      </form>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Login to Your Account</h1>
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+          <form onSubmit={handleLogin} className="space-y-6">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              required
+            />
+            <button
+              type="submit"
+              className="w-full bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-400 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+            >
+              Login
+            </button>
+          </form>
+          <p className="text-center mt-4 text-gray-600">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-indigo-600 hover:underline">
+              Create one
+            </Link>
+          </p>
+        </div>
+      </div>
     </Layout>
   );
 };
