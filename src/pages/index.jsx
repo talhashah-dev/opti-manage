@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 
 const Home = () => {
   return (
-    <Layout title="Home">
+    <Layout title="Opti Manage">
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-6">
         <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to the Task Management System</h1>
         <p className="text-lg text-gray-600 mb-8">Manage your tasks efficiently, whether you&apos;re an admin assigning tasks or a member tracking your progress.</p>
