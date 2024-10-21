@@ -1,11 +1,12 @@
 import React from "react";
+import Layout from '../components/Layout';
 
 const Unauthorized = () => {
   return (
-    <div>
-      <h1>Unauthorized</h1>
-      <p>You do not have permission to view this page.</p>
-    </div>
+    <Layout title="Unauthorized Access">
+      <h1 className="text-2xl font-bold mb-6">Unauthorized Access</h1>
+      <p>You do not have permission to access this page.</p>
+    </Layout>
   );
 };
 

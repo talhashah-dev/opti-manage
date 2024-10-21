@@ -6,6 +6,7 @@ import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
+import Layout from "@/components/Layout";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -30,11 +31,10 @@ export default function Signup() {
         role: role,
       });
 
-    
       if (role === "admin") {
-        router.push("/adminDashboard"); 
+        router.push("/adminDashboard");
       } else {
-        router.push("/memberDashboard"); 
+        router.push("/memberDashboard");
       }
     } catch (error) {
       setError(error.message);
@@ -42,39 +42,41 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSignup}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="text-black"
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="text-black"
-          />
-        </div>
-        <div>
-          <label>Role:</label>
-          <select value={role} onChange={(e) => setRole(e.target.value)} className="text-black">
-            <option value="member">Member</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
-        <button type="submit">Sign Up</button>
+    <Layout title="Sign Up">
+      <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
+      <form onSubmit={handleSignup} className="space-y-4">
+        {error && <p className="text-red-500">{error}</p>}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded text-black"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded text-black"
+          required
+        />
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded text-black"
+        >
+          <option value="member">Member</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white p-2 rounded"
+        >
+          Sign Up
+        </button>
       </form>
-    </div>
+    </Layout>
   );
 }
