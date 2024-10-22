@@ -40,10 +40,9 @@ const Login = () => {
   };
 
   return (
-    <Layout>
       <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
-        <div className="w-full max-w-md bg-white shadow-md rounded-lg px-8 py-10 overflow-hidden">
-          <h1 className="text-2xl font-medium text-center text-gray-800 mb-6">
+        <div className="w-full max-w-md px-8 py-10 overflow-hidden">
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
             Login to Your Account
           </h1>
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -79,7 +78,6 @@ const Login = () => {
           </p>
         </div>
       </div>
-    </Layout>
   );
 };
 
