@@ -37,9 +37,8 @@ export default function Signup() {
   };
 
   return (
-    <Layout title="Sign Up">
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <div className="p-8 max-w-md w-full">
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Create Your Account</h1>
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
           <form onSubmit={handleSignup} className="space-y-6">
@@ -48,7 +47,7 @@ export default function Signup() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-black "
               required
             />
             <input
@@ -56,7 +55,7 @@ export default function Signup() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-black"
               required
             />
             <select
@@ -82,6 +81,5 @@ export default function Signup() {
           </p>
         </div>
       </div>
-    </Layout>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FaSignInAlt, FaUserPlus, FaSearch } from "react-icons/fa"; // Importing icons
+import { FaSignInAlt, FaUserPlus, FaSearch } from "react-icons/fa";
+import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
   const router = useRouter();
@@ -13,15 +14,10 @@ const Navbar = () => {
           Opti Manage
         </Link>
         <div className="flex items-center space-x-4">
-          <Link
-            href="/login"
-            className={`flex items-center space-x-1 transition-colors duration-200 hover:text-gray-300 ${
-              router.pathname === "/login" ? "text-gray-300 font-semibold" : ""
-            }`}
-          >
+          <span className="flex items-center gap-1">
             <FaSignInAlt />
-            <span>Login</span>
-          </Link>
+            <LogoutButton />
+          </span>
           <Link
             href="/signup"
             className={`flex items-center space-x-1 transition-colors duration-200 hover:text-gray-300 ${

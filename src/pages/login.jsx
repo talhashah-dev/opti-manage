@@ -40,10 +40,12 @@ const Login = () => {
   };
 
   return (
-    <Layout title="Login">
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-          <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Login to Your Account</h1>
+    <Layout>
+      <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
+        <div className="w-full max-w-md bg-white shadow-md rounded-lg px-8 py-10 overflow-hidden">
+          <h1 className="text-2xl font-medium text-center text-gray-800 mb-6">
+            Login to Your Account
+          </h1>
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
           <form onSubmit={handleLogin} className="space-y-6">
             <input
@@ -51,7 +53,7 @@ const Login = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition text-black"
               required
             />
             <input
@@ -59,12 +61,12 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition text-black"
               required
             />
             <button
               type="submit"
-              className="w-full bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-400 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+              className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
             >
               Login
             </button>
