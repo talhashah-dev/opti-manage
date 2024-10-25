@@ -6,6 +6,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import Image from "next/image";
+import Head from "next/head";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +19,11 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       const docRef = doc(db, "users", user.uid);
@@ -40,8 +46,15 @@ const Login = () => {
   };
 
   return (
+    <>
+      <Head>
+        <title>Opti Manage | Login</title>
+      </Head>
       <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
         <div className="w-full max-w-md px-8 py-10 overflow-hidden">
+          <span className="w-full flex justify-center mb-3">
+            <Image src="/images/logo.png" width={80} height={80} alt="Logo" />
+          </span>
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
             Login to Your Account
           </h1>
@@ -78,6 +91,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+    </>
   );
 };
 
