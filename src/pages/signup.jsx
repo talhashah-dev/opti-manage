@@ -109,10 +109,10 @@ export default function Signup() {
             </select>
             <button
               type="submit"
-              className={`w-full bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-400 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 ${
-                loading ? "cursor-wait hover:scale-100 bg-indigo-400" : null
+              className={`w-full bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-400 transition-transform transform focus:outline-none focus:ring-4 focus:ring-indigo-300 ${
+                loading ? "cursor-wait bg-indigo-400" : null
               }`}
-              id="submit"
+              disabled={loading ? true : false}
             >
               Sign Up
             </button>

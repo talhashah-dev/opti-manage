@@ -13,12 +13,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     try {
+      setLoading(true);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -41,6 +43,7 @@ const Login = () => {
         console.log("No such document!");
       }
     } catch (error) {
+      setLoading(false);
       setError(error.message);
     }
   };
@@ -78,7 +81,10 @@ const Login = () => {
             />
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
+              className={`w-full bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-400 transition-transform transform focus:outline-none focus:ring-4 focus:ring-indigo-300 ${
+                loading ? "cursor-wait bg-indigo-400" : null
+              }`}
+              disabled={loading ? true : false}
             >
               Login
             </button>
