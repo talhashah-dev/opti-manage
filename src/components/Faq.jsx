@@ -3,28 +3,28 @@ import { useState } from "react";
 
 const faqData = [
   {
-    question: "What's the best thing about Switzerland?",
-    answer: "I'm not sure, but the flag is a big plus!",
+    question: "Who is behind this project?",
+    answer: "The project is led by Syed Talha, a passionate developer and technology enthusiast with experience in web development and software engineering.",
   },
   {
-    question: "How do you make holy water?",
-    answer: "You boil the hell out of it.",
+    question: "What inspired you to start this project?",
+    answer: "I wanted to create a platform that would help users [mention your specific goals, e.g., simplify web development, provide unique tech solutions, etc.]. My aim is to make technology more accessible and powerful for everyone.",
   },
   {
-    question: "What do you call someone with no body and no nose?",
-    answer: "Nobody knows.",
+    question: "What is your background and experience in tech?",
+    answer: "I have a background in [mention your field, e.g., computer science, web development], with hands-on experience in technologies like JavaScript, React, Next.js, and more. Over the years, I've worked on various projects ranging from simple websites to complex web applications.",
   },
   {
-    question: "Why do you never see elephants hiding in trees?",
-    answer: "Because they’re so good at it.",
+    question: "What technologies are you most passionate about?",
+    answer: "I'm particularly passionate about frontend development with tools like React and Next.js, as well as building intuitive user interfaces with Tailwind CSS. I love staying updated with the latest trends and best practices in the tech industry.",
   },
   {
-    question: "Why can't you hear a pterodactyl go to the bathroom?",
-    answer: "Because the P is silent.",
+    question: "How can I reach out to you for questions or collaboration?",
+    answer: "Feel free to reach out via [mention preferred contact method, e.g., email or social media]. I'm always open to discussing new ideas and potential collaborations!",
   },
   {
-    question: "Why did the invisible man turn down the job offer?",
-    answer: "He couldn’t see himself doing it.",
+    question: "Do you offer mentorship or tutorials?",
+    answer: "Yes! I enjoy sharing my knowledge through [mention platform, e.g., blog posts, tutorials, online courses]. I also provide one-on-one mentorship for those interested in learning more about web development and software engineering.",
   },
 ];
 
