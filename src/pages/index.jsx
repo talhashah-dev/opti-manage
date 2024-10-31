@@ -4,7 +4,7 @@ import Image from "next/image";
 import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GoArrowUp } from "react-icons/go"
 
 const Home = () => {
@@ -15,10 +15,18 @@ const Home = () => {
     setMobileMenuOpen(false);
   };
 
-  const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
-    scrolled > 300 ? setVisible(true) : setVisible(false);
-  };
+  useEffect(() => {
+    const toggleVisible = () => {
+      const scrolled = document.documentElement.scrollTop;
+      setVisible(scrolled > 600);
+    };
+  
+    window.addEventListener("scroll", toggleVisible);
+  
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("scroll", toggleVisible);
+  }, []);
+  
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -27,7 +35,6 @@ const Home = () => {
     })
   }
 
-  window.addEventListener("scroll", toggleVisible);
 
 
   return (
