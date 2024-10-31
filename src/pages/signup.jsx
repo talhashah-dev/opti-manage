@@ -4,10 +4,10 @@ import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -54,6 +54,13 @@ export default function Signup() {
       <Head>
         <title>Opti Manage | Sign Up</title>
       </Head>
+
+      <div className="text-black p-2 fixed mt-5 mx-5 hover:rounded-full hover:bg-indigo-500 hover:text-white">
+        <Link href="/">
+          <ArrowLeftIcon height={30} width={30} />
+        </Link>
+      </div>
+
 
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="p-8 max-w-md w-full">

@@ -8,6 +8,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -53,6 +54,13 @@ const Login = () => {
       <Head>
         <title>Opti Manage | Login</title>
       </Head>
+
+    <div className="text-black p-2 fixed mt-5 mx-5 hover:rounded-full hover:bg-indigo-500 hover:text-white">
+      <Link href="/">
+      <ArrowLeftIcon height={30} width={30} />
+      </Link>
+    </div>
+
       <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
         <div className="w-full max-w-md px-8 py-10 overflow-hidden">
           <span className="w-full flex justify-center mb-3">
