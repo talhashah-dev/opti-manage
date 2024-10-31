@@ -5,13 +5,30 @@ import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import { useState } from "react";
+import { GoArrowUp } from "react-icons/go"
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+  const [visible, setVisible] = useState(false);
+
   const handleClick = () => {
     setMobileMenuOpen(false);
   };
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    scrolled > 300 ? setVisible(true) : setVisible(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
+  window.addEventListener("scroll", toggleVisible);
+
 
   return (
     <Layout title="Opti Manage">
@@ -121,7 +138,15 @@ const Home = () => {
       
       {/* FAQs Section */}
       <Faq />
-
+      <button
+              title="GO TO TOP"
+              className={`rounded-full p-4 text-2xl text-purple-500 hover:text-white bg-white hover:bg-[#9089fc] fixed right-5 bottom-10 shadow-lg z-30 shadow-[#9089fc] ${
+                visible ? "block" : "hidden"
+              }`}
+              onClick={scrollToTop}
+            >
+              <GoArrowUp />
+            </button>
     </Layout>
   );
 };
