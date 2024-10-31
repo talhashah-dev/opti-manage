@@ -7,24 +7,24 @@ const faqData = [
     answer: "The project is led by Syed Talha, a passionate developer and technology enthusiast with experience in web development and software engineering.",
   },
   {
-    question: "What inspired you to start this project?",
-    answer: "I wanted to create a platform that would help users [mention your specific goals, e.g., simplify web development, provide unique tech solutions, etc.]. My aim is to make technology more accessible and powerful for everyone.",
+    question: "What inspired the creation of this product?",
+    answer: "The idea came from a desire to solve Simplifying Complex Workflows Our goal is to offer a solution that truly helps users in meaningful ways.",
   },
   {
-    question: "What is your background and experience in tech?",
-    answer: "I have a background in [mention your field, e.g., computer science, web development], with hands-on experience in technologies like JavaScript, React, Next.js, and more. Over the years, I've worked on various projects ranging from simple websites to complex web applications.",
+    question: "What makes this product unique?",
+    answer: "This product is designed with a focus on User-friendly interface, High performance, Innovative features Unlike other solutions, we prioritize Customization & Accessibility.",
   },
   {
-    question: "What technologies are you most passionate about?",
-    answer: "I'm particularly passionate about frontend development with tools like React and Next.js, as well as building intuitive user interfaces with Tailwind CSS. I love staying updated with the latest trends and best practices in the tech industry.",
+    question: "What technologies power this product?",
+    answer: "The product is built using a robust tech stack, including Next.js, Tailwind CSS and Google Firebase. These technologies help us deliver a fast, responsive, and scalable experience for all users.",
   },
   {
-    question: "How can I reach out to you for questions or collaboration?",
-    answer: "Feel free to reach out via [mention preferred contact method, e.g., email or social media]. I'm always open to discussing new ideas and potential collaborations!",
+    question: "How can I get support or report an issue?",
+    answer: "We’re here to help! You can reach out to us via syedtalhadev@gmail.com. We strive to address all inquiries as quickly as possible.",
   },
   {
-    question: "Do you offer mentorship or tutorials?",
-    answer: "Yes! I enjoy sharing my knowledge through [mention platform, e.g., blog posts, tutorials, online courses]. I also provide one-on-one mentorship for those interested in learning more about web development and software engineering.",
+    question: "Are there any upcoming features or updates?",
+    answer: "Yes! We’re constantly working to improve the product. Upcoming features include additional integrations & new functionalities. Stay tuned for updates on our roadmap!",
   },
 ];
 
