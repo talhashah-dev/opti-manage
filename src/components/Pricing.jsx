@@ -64,18 +64,18 @@ const Pricing = () => {
         Choose a plan that fits your needs, with access to key features that
         keep you and your team organized.
       </p>
-      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-2">
         {tiers.map((tier, tierIdx) => (
           <div
             key={tier.id}
             className={classNames(
               tier.featured
                 ? "relative bg-gray-900 shadow-2xl"
-                : "bg-white/60 sm:mx-8 lg:mx-0",
+                : "bg-white/60 lg:mx-0",
               tier.featured
                 ? ""
                 : tierIdx === 0
-                ? "rounded-t-3xl sm:rounded-b-none lg:rounded-bl-3xl lg:rounded-tr-none"
+                ? "rounded-t-3xl lg:rounded-bl-3xl"
                 : "sm:rounded-t-none lg:rounded-bl-none lg:rounded-tr-3xl",
               "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10"
             )}

@@ -7,7 +7,11 @@ import Faq from "@/components/Faq";
 import { useState } from "react";
 
 const Home = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const handleModal = (index) => {
+
+  };
+
   return (
     <Layout title="Opti Manage">
       {/* Hero Section */}
@@ -15,7 +19,7 @@ const Home = () => {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
-            <Link href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <Image
                 className="h-8 w-auto"
@@ -47,8 +51,10 @@ const Home = () => {
         </nav>
         
         <div className="lg:hidden" role="dialog" aria-modal="true">
-          <div className="fixed inset-0 z-50"></div>
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          {/* <div className="fixed inset-0 z-50"></div> */}
+          {/* menu mobile */}
+
+          <div className={`${mobileMenuOpen ? "fixed" : "hidden"} inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10`}>
             <div className="flex items-center justify-between">
               <Link href="#" className="-m-1.5 p- 1.5">
                 <span className="sr-only">Your Company</span>
@@ -69,17 +75,18 @@ const Home = () => {
             </div>
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  <Link href="#features" className="text-sm font-semibold leading-6 text-gray-900">Features</Link>
-                  <Link href="#pricing" className="text-sm font-semibold leading-6 text-gray-900">Pricing</Link>
-                  <Link href="#faq" className="text-sm font-semibold leading-6 text-gray-900">FAQs</Link>
+                <div className="space-y-2 py-6 flex flex-col gap-5">
+                  <Link href="#features" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200">Features</Link>
+                  <Link href="#pricing" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200">Pricing</Link>
+                  <Link href="#faq" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200">FAQs</Link>
                 </div>
                 <div className="py-6">
-                  <Link href="/login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</Link>
+                  <Link href="/login" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200">Log in</Link>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </header>
 
