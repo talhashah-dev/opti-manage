@@ -4,7 +4,6 @@ import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";

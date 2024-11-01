@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = ({ title, children }) => {
