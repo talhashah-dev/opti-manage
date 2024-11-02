@@ -44,7 +44,20 @@ const Login = () => {
       }
     } catch (error) {
       setLoading(false);
-      setError(error.message);
+      switch (error.code) {
+        case "auth/invalid-email":
+          setError("Check Your Email Address & Password.");
+          break;
+        case "auth/missing-password":
+          setError("Incorrect password. Please try again.");
+          break;
+        case "auth/too-many-requests":
+          setError("Account temporarily disabled due to multiple failed login attempts.");
+          break;
+        default:
+          setError("An unexpected error occurred. Please try again.");
+          break;
+      }
     }
   };
 

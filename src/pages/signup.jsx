@@ -45,7 +45,20 @@ export default function Signup() {
       }
     } catch (error) {
       setLoading(false);
-      setError(error.message);
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          setError("User with this Email already exist!");
+          break;
+        case "auth/weak-password":
+          setError("Password should be at least 8 characters!");
+          break;
+        case "auth/too-many-requests":
+          setError("Account temporarily disabled due to multiple failed login attempts.");
+          break;
+        default:
+          setError("An unexpected error occurred. Please try again.");
+          break;
+      }
     }
   };
 
