@@ -6,6 +6,7 @@ import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import { useEffect, useState } from "react";
 import { GoArrowUp } from "react-icons/go"
+import Modal from "@/common/Modal";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

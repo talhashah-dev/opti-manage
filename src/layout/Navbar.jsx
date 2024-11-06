@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaSignInAlt, FaUserPlus, FaSearch } from "react-icons/fa";
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "../components/LogoutButton";
 
 const Navbar = () => {
   const router = useRouter();

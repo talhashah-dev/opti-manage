@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Footer from "./Footer";
+import Footer from "../layout/Footer";
 
 const Layout = ({ title, children }) => {
   const router = useRouter();
