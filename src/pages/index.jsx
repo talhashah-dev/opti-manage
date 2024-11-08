@@ -7,6 +7,7 @@ import Faq from "@/components/Faq";
 import { useEffect, useState } from "react";
 import { GoArrowUp } from "react-icons/go"
 import Modal from "@/common/Modal";
+import Clients from "@/components/Clients";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -137,6 +138,9 @@ const Home = () => {
         </div>
       </div>
     </div>
+
+      {/* Clients Section */}
+      <Clients />
 
       {/* Features Section */}
       <Features />
