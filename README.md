@@ -31,7 +31,6 @@ Opti Manage is a simple and efficient task management system built with Next.js 
     ```bash 
     npm install
 
-
 3. Install dependencies:
     Create a .env.local file with your Firebase credentials.
 
