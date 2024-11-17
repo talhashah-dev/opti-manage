@@ -2,10 +2,10 @@
 import { useState } from "react";
 
 const faqData = [
-  {
-    question: "Who is behind this project?",
-    answer: "The project is led by Syed Talha, a passionate developer and technology enthusiast with experience in web development and software engineering.",
-  },
+  // {
+  //   question: "Who is behind this project?",
+  //   answer: "The project is led by Syed Talha, a passionate developer and technology enthusiast with experience in web development and software engineering.",
+  // },
   {
     question: "What inspired the creation of this product?",
     answer: "The idea came from a desire to solve Simplifying Complex Workflows Our goal is to offer a solution that truly helps users in meaningful ways.",
