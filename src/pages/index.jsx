@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { GoArrowUp } from "react-icons/go"
 import Modal from "@/common/Modal";
 import Clients from "@/components/Clients";
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -125,12 +126,33 @@ const Home = () => {
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
           </div>
           <div className="text-center">
-            <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Supercharge Your Task Management</h1>
+            <motion.div  initial={{y:-100}} animate={{ y: 0 }}
+                        transition={{ 
+                          ease: "easeOut", 
+                          duration: 0.4
+                        }}
+            >
+              <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Supercharge Your Task Management</h1>
+            </motion.div>
             <p className="mt-8 text-lg font-medium text-gray-500 sm:text-xl">OptiManage offers intuitive task assignment, real-time progress tracking, and secure, role-based access, making team management seamless and efficient. Perfect for keeping projects organized and on schedule.</p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/signup" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Get started</Link>
-              <Link href="#faq" className="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></Link>
-            </div>
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <motion.div initial="hidden" animate="visible" whileHover={{
+                  scale: 1.05,
+                  transition: {
+                    duration: .2
+                  }
+                }}>
+                  <Link href="/signup" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Get started</Link>
+                </motion.div>
+                <motion.div initial="hidden" animate="visible" whileHover={{
+                  scale: 1.05,
+                  transition: {
+                    duration: .2
+                  }
+                }}>
+                  <Link href="#faq" className="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></Link>
+                </motion.div>
+              </div>
           </div>
         </div>
         <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
