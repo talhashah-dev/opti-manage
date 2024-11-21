@@ -3,14 +3,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const clients = [
-  { name: "Microsoft", logo: "/images/clients/ah.png" },
-  { name: "DELL", logo: "/images/clients/hbl.png" },
-  { name: "Ibex", logo: "/images/clients/blackrock.png" },
-  { name: "AH", logo: "/images/clients/dell.png" },
-  { name: "BlackRock", logo: "/images/clients/ibex.png" },
-  { name: "Folio", logo: "/images/clients/hrways.png" },
+  { name: "Microsoft", logo: "/images/clients/microsoft.png" },
+  { name: "DELL", logo: "/images/clients/dell.png" },
+  { name: "Ibex", logo: "/images/clients/ibex.png" },
+  { name: "AH", logo: "/images/clients/ah.png" },
+  { name: "BlackRock", logo: "/images/clients/blackrock.png" },
+  { name: "Folio", logo: "/images/clients/folio.png" },
   { name: "Evil Corp", logo: "/images/clients/evilcorp.png" },
-  { name: "HBL", logo: "/images/clients/folio.png" },
+  { name: "HBL", logo: "/images/clients/hbl.png" },
 ];
 
 const Clients = () => {
