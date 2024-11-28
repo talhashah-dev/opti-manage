@@ -16,7 +16,7 @@ const Layout = ({ title, children }) => {
         <main className="flex-1 w-full mx-auto bg-white rounded-lg">
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

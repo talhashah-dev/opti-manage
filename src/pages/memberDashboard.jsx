@@ -9,9 +9,9 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import LogoutButton from "../components/LogoutButton";
 import Layout from "@/components/Layout";
 import { FaCheckCircle, FaTasks } from "react-icons/fa"; // Importing icons
+import Sidebar from "@/components/Sidebar";
 
 const MemberDashboard = () => {
   const { user, role, loading } = useAuth("member");
@@ -54,14 +54,15 @@ const MemberDashboard = () => {
 
   return (
     <Layout title="Your Tasks">
-      <div className="flex flex-col items-center p-6 bg-gray-100">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800 bg-white p-4 rounded-lg shadow">
+      <div className="flex bg-gray-100 h-screen">
+      <Sidebar />
+        {/* <h1 className="text-3xl font-bold mb-6 text-gray-800 bg-white p-4 rounded-lg shadow">
           Assigned Tasks
-        </h1>
+        </h1> */}
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
-        <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
+        <div className="bg-black shadow-md p-6 w-full">
           {tasks.length === 0 ? (
             <p className="text-gray-600">No tasks assigned.</p>
           ) : (
@@ -90,7 +91,6 @@ const MemberDashboard = () => {
             </ul>
           )}
         </div>
-        <LogoutButton />
       </div>
     </Layout>
   );
