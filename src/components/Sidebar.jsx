@@ -57,7 +57,7 @@ const Sidebar = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       className="w-8 h-8 rounded-full"
-                      src="/images/logo"
+                      src="/images/user/user.png"
                       alt="user photo"
                       width={20}
                       height={20}
