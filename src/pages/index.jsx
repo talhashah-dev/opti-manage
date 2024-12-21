@@ -13,6 +13,8 @@ import { motion } from 'framer-motion';
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const heroText = "Supercharge Your Task Management".split(" ");
+
 
   const handleClick = () => {
     setMobileMenuOpen(false);
@@ -126,14 +128,21 @@ const Home = () => {
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
           </div>
           <div className="text-center">
-            <motion.div  initial={{y:-100}} animate={{ y: 0 }}
-                        transition={{ 
-                          ease: "easeOut", 
-                          duration: 0.4
-                        }}
-            >
-              <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Supercharge Your Task Management</h1>
-            </motion.div>
+            <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+            {heroText.map((el, i) => (
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 2,
+            delay: i / 10,
+          }}
+          key={i}
+        >
+          {el}{" "}
+        </motion.span>
+      ))}
+            </h1>
             <p className="mt-8 text-lg font-medium text-gray-500 sm:text-xl">OptiManage offers intuitive task assignment, real-time progress tracking, and secure, role-based access, making team management seamless and efficient. Perfect for keeping projects organized and on schedule.</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <motion.div initial="hidden" animate="visible" whileHover={{
