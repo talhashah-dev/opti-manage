@@ -4,6 +4,8 @@ import {
   FingerPrintIcon,
   LockClosedIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const featuresArr = [
   {
@@ -33,6 +35,21 @@ const featuresArr = [
 ];
 
 const Features = () => {
+  const heroText = "Key Features to Enhance Your Productivity".split(" ");
+  const [playAnimation, setPlayAnimation] = useState(false);
+
+  useEffect(() => {
+    const toggleVisible = () => {
+      const scrolled = document.documentElement.scrollTop;
+      setPlayAnimation(scrolled > 750);
+    };
+
+    window.addEventListener("scroll", toggleVisible);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("scroll", toggleVisible);
+  }, []);
+
   return (
     <div className="bg-white py-24 sm:py-32" id="features">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -41,7 +58,20 @@ const Features = () => {
             Empower Your Workflow
           </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl max-sm:text-center lg:text-balance">
-            Key Features to Enhance Your Productivity
+            {playAnimation ? heroText.map((el, i) => (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 3,
+                      delay: i / 10,
+                    }}
+                    key={i}
+                  >
+                    {el}{" "}
+                  </motion.span>
+                ))
+              : null}
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600 text-center">
             OptiManage provides a streamlined, secure, and flexible environment

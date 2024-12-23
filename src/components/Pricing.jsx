@@ -1,5 +1,6 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const tiers = [
   {
@@ -39,6 +40,22 @@ function classNames(...classes) {
 }
 
 const Pricing = () => {
+  const heroText = "Find the perfect plan for your team".split(" ");
+  const [playAnimation, setPlayAnimation] = useState(false);
+
+  useEffect(() => {
+    const toggleVisible = () => {
+      const scrolled = document.documentElement.scrollTop;
+      console.log(scrolled)
+      setPlayAnimation(scrolled > 1400);
+    };
+
+    window.addEventListener("scroll", toggleVisible);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("scroll", toggleVisible);
+  }, []);
+
   return (
     <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8" id="pricing">
       <div
@@ -58,7 +75,20 @@ const Pricing = () => {
           Pricing
         </h2>
         <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
-          Find the perfect plan for your team
+          {playAnimation ? heroText.map((el, i) => (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 3,
+                      delay: i / 10,
+                    }}
+                    key={i}
+                  >
+                    {el}{" "}
+                  </motion.span>
+                ))
+              : null}
         </p>
       </div>
       <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-gray-600 sm:text-xl/8">
