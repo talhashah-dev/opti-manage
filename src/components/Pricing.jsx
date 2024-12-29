@@ -46,7 +46,6 @@ const Pricing = () => {
   useEffect(() => {
     const toggleVisible = () => {
       const scrolled = document.documentElement.scrollTop;
-      console.log(scrolled)
       setPlayAnimation(scrolled > 1400);
     };
 
