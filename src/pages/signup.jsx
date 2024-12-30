@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
@@ -18,6 +18,25 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+
+  const handleGoogleLogin = async () => {
+    console.log("working...")
+    signInWithPopup(auth, provider)
+    .then(async (result) => {
+      const credential =  GoogleAuthProvider.credentialFromResult(result);
+      console.log(credential)
+      const token = credential.accessToken;
+      user = result.user;
+      console.log("Singup Completed")
+      
+    }).catch(async (error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // const email = await error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    })}
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -137,6 +156,7 @@ export default function Signup() {
               Sign Up
             </button>
           </form>
+            <button className="text-black" onClick={handleGoogleLogin}>Google Login</button>
           <p className="text-center mt-4 text-gray-600">
             Already have an account?{" "}
             <Link href="/login" className="text-indigo-600 hover:underline">
