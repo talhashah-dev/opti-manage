@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
@@ -8,13 +13,33 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { FcGoogle } from "react-icons/fc";
+import { RiGoogleFill } from "react-icons/ri";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [iconColored, setIconColored] = useState(false);
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
   const router = useRouter();
+
+  const handleGoogleLogin = async () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const user = result.user;
+        router.push("/memberDashboard");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -52,7 +77,9 @@ const Login = () => {
           setError("Incorrect password. Please try again.");
           break;
         case "auth/too-many-requests":
-          setError("Account temporarily disabled due to multiple failed login attempts.");
+          setError(
+            "Account temporarily disabled due to multiple failed login attempts."
+          );
           break;
         default:
           setError("An unexpected error occurred. Please try again.");
@@ -67,11 +94,11 @@ const Login = () => {
         <title>Opti Manage | Login</title>
       </Head>
 
-    <div className="text-black p-2 fixed mt-5 mx-5 hover:rounded-full hover:bg-indigo-500 hover:text-white">
-      <Link href="/">
-      <ArrowLeftIcon height={30} width={30} />
-      </Link>
-    </div>
+      <div className="text-black p-2 fixed mt-5 mx-5 hover:rounded-full hover:bg-indigo-500 hover:text-white">
+        <Link href="/">
+          <ArrowLeftIcon height={30} width={30} />
+        </Link>
+      </div>
 
       <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
         <div className="w-full max-w-md px-8 py-10 overflow-hidden">
@@ -109,6 +136,17 @@ const Login = () => {
               Login
             </button>
           </form>
+          <div className="flex flex-col items-center gap-3 mt-2 mb-8">
+            <p className="mt-4 text-gray-600">or signup using</p>
+            <button
+              className="text-4xl text-black"
+              onClick={handleGoogleLogin}
+              onMouseOver={() => setIconColored(true)}
+              onMouseLeave={() => setIconColored(false)}
+            >
+              {iconColored ? <FcGoogle /> : <RiGoogleFill />}
+            </button>
+          </div>
           <p className="text-center mt-4 text-gray-600">
             Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-indigo-600 hover:underline">

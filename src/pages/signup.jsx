@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
@@ -8,6 +13,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { FcGoogle } from "react-icons/fc";
+import { RiGoogleFill } from "react-icons/ri";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -20,23 +27,22 @@ export default function Signup() {
   const router = useRouter();
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
+  const [iconColored, setIconColored] = useState(false);
 
   const handleGoogleLogin = async () => {
-    console.log("working...")
     signInWithPopup(auth, provider)
-    .then(async (result) => {
-      const credential =  GoogleAuthProvider.credentialFromResult(result);
-      console.log(credential)
-      const token = credential.accessToken;
-      user = result.user;
-      console.log("Singup Completed")
-      
-    }).catch(async (error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // const email = await error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-    })}
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const user = result.user;
+        router.push("/memberDashboard");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -72,7 +78,9 @@ export default function Signup() {
           setError("Password should be at least 8 characters!");
           break;
         case "auth/too-many-requests":
-          setError("Account temporarily disabled due to multiple failed login attempts.");
+          setError(
+            "Account temporarily disabled due to multiple failed login attempts."
+          );
           break;
         default:
           setError("An unexpected error occurred. Please try again.");
@@ -92,7 +100,6 @@ export default function Signup() {
           <ArrowLeftIcon height={30} width={30} />
         </Link>
       </div>
-
 
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="p-8 max-w-md w-full">
@@ -156,7 +163,18 @@ export default function Signup() {
               Sign Up
             </button>
           </form>
-            <button className="text-black" onClick={handleGoogleLogin}>Google Login</button>
+
+          <div className="flex flex-col items-center gap-3 mt-2 mb-8">
+            <p className="mt-4 text-gray-600">or signup using</p>
+            <button
+              className="text-4xl text-black"
+              onClick={handleGoogleLogin}
+              onMouseOver={() => setIconColored(true)}
+              onMouseLeave={() => setIconColored(false)}
+            >
+              {iconColored ? <FcGoogle /> : <RiGoogleFill />}
+            </button>
+          </div>
           <p className="text-center mt-4 text-gray-600">
             Already have an account?{" "}
             <Link href="/login" className="text-indigo-600 hover:underline">

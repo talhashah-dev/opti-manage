@@ -23,7 +23,6 @@ export default function useAuth(requiredRole = null) {
           const userRole = docSnap.data().role;
           setRole(userRole);
 
-          // agar is page ka lya user ka role or required match nhi ho to redirect karo
           if (requiredRole && userRole !== requiredRole) {
             router.push("/unauthorized");
           }
@@ -32,7 +31,6 @@ export default function useAuth(requiredRole = null) {
           router.push("/login");
         }
       } else {
-        // user bina login ka access karna cha ha to redirect karo login page pa
         router.push("/login");
       }
       setLoading(false);
